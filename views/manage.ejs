@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwapPai-Shop</title>
+    <link
+      rel="stylesheet"
+      href="css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script
+      src="js/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="js/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <%- include("navbar") %>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body text-center">
+              <h2><b>Manage Goods </b></h2>
+              <p>
+                Add, delete, edit data in the database.
+                <a href="/logout">logout</a>
+              </p>
+            </div>
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="thead-light">
+                  <tr>
+                    <th>
+                      <label class="customcheckbox m-b-20">
+                        <input type="checkbox" id="mainCheckbox" />
+                        <span class="checkmark"></span>
+                      </label>
+                    </th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Details</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                  </tr>
+                </thead>
+                <tbody class="customtable">
+                  <% Object.values(products).forEach(function(item) { %>
+                  <tr>
+                    <th>
+                      <label class="customcheckbox">
+                        <input type="checkbox" class="listCheckbox" />
+                        <span class="checkmark"></span>
+                      </label>
+                    </th>
+                    <td><%= item.name %></td>
+                    <td><%= item.price %></td>
+                    <td><%= item.description %></td>
+
+                    <td>
+                      <a
+                        class="btn btn-danger"
+                        href="/delete/<%= item._id%>"
+                        onclick="return confirm('คุณต้องการลบข้อมูล <%= item.name %> หรือไม่ ?')"
+                        >ลบ</a
+                      >
+                    </td>
+                    <td>
+                      <form action="/edit" method="POST">
+                        <input
+                          type="text"
+                          name="edit_id"
+                          value="<%= item._id%>"
+                        />
+                        <button type="submit" class="btn btn-primary">
+                          แก้ไข
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <style>
+    .card {
+      position: relative;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 0px solid transparent;
+      border-radius: 0px;
+    }
+
+    .card-body {
+      -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+      padding: 1.25rem;
+    }
+
+    .card .card-title {
+      position: relative;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .table {
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 1rem;
+      background-color: transparent;
+    }
+
+    * {
+      outline: none;
+    }
+
+    .table th,
+    .table thead th {
+      font-weight: 500;
+    }
+
+    .table thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #dee2e6;
+    }
+
+    .table th {
+      padding: 1rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6;
+    }
+
+    .table th,
+    .table thead th {
+      font-weight: 500;
+    }
+
+    th {
+      text-align: inherit;
+    }
+
+    .m-b-20 {
+      margin-bottom: 20px;
+    }
+
+    .customcheckbox {
+      display: block;
+      position: relative;
+      padding-left: 24px;
+      font-weight: 100;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: 22px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    .customcheckbox input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .checkmark {
+      position: absolute;
+      top: -3px;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: #cdcdcd;
+      border-radius: 6px;
+    }
+
+    .customcheckbox input:checked ~ .checkmark {
+      background-color: #2196bb;
+    }
+
+    .customcheckbox .checkmark:after {
+      left: 8px;
+      top: 4px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  </style>
+</html>

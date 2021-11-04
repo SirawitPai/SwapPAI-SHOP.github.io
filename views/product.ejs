@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>รายละเอียดสินค้า</title>
+    <link
+      rel="stylesheet"
+      href="css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script
+      src="js/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="js/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <%- include("navbar") %> <% if(product) { %>
+    <h1 style="text-align: center">Details</h1>
+    <div class="wrapper">
+      <div class="product-img">
+        <img
+          src="images/products/<%= product.image %>"
+          height="100%"
+          width="100%"
+        />
+      </div>
+      <div class="product-info">
+        <div class="product-text">
+          <h1><%=product.name %></h1>
+          <p><b>Pice :</b> <%=product.price %> B</p>
+          <p>รายละเอียดสินค้า : <%=product.description %></p>
+        </div>
+        <div class="product-price-btn">
+          <button type="button">buy now</button>
+        </div>
+      </div>
+    </div>
+    <% } %>
+
+    <style>
+      .wrapper {
+        height: 550px;
+        width: 50%;
+        margin: 50px auto;
+        border-radius: 7px 7px 7px 7px;
+        /* VIA CSS MATIC https://goo.gl/cIbnS */
+        -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+        box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+      }
+
+      .product-img {
+        float: left;
+        height: 550px;
+        width: 50%;
+      }
+
+      .product-img img {
+        border-radius: 7px 0 0 7px;
+      }
+
+      .product-info {
+        float: left;
+        height: 420px;
+        width: 327px;
+        border-radius: 0 7px 10px 7px;
+        background-color: #ffffff;
+      }
+
+      .product-text {
+        height: 300px;
+        width: 327px;
+      }
+
+      .product-text h1 {
+        margin: 0 0 0 38px;
+        padding-top: 52px;
+        font-size: 34px;
+        color: #474747;
+      }
+
+      .product-text h1,
+      .product-price-btn p {
+        font-family: "Bentham", serif;
+      }
+
+      .product-text h2 {
+        margin: 0 0 47px 38px;
+        font-size: 13px;
+        font-family: "Raleway", sans-serif;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: #d2d2d2;
+        letter-spacing: 0.2em;
+      }
+
+      .product-text p {
+        height: 125px;
+        margin: 0 0 0 38px;
+        font-family: "Playfair Display", serif;
+        color: #8d8d8d;
+        line-height: 1.7em;
+        font-size: 15px;
+        font-weight: lighter;
+        overflow: hidden;
+      }
+
+      .product-price-btn {
+        height: 103px;
+        width: 327px;
+        margin-top: 17px;
+        position: relative;
+      }
+
+      .product-price-btn p {
+        display: inline-block;
+        position: absolute;
+        top: -13px;
+        height: 50px;
+        font-family: "Trocchi", serif;
+        margin: 0 0 0 38px;
+        font-size: 28px;
+        font-weight: lighter;
+        color: #474747;
+      }
+
+      span {
+        display: inline-block;
+        height: 50px;
+        font-family: "Suranna", serif;
+        font-size: 34px;
+      }
+
+      .product-price-btn button {
+        float: right;
+        display: inline-block;
+        height: 50px;
+        width: 176px;
+        margin: 0 40px 0 16px;
+        box-sizing: border-box;
+        border: transparent;
+        border-radius: 60px;
+        font-family: "Raleway", sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: #ffffff;
+        background-color: #f3b736;
+        cursor: pointer;
+        outline: none;
+      }
+
+      .product-price-btn button:hover {
+        background-color: #79b0a1;
+      }
+    </style>
+  </body>
+</html>

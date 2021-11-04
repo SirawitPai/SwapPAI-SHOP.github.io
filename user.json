@@ -1,0 +1,26 @@
+{
+    "user1": {
+        "name" : "athit",
+        "password" : "password1",
+        "occupation" : "teacher" , 
+        "id" : 1
+    },
+    "user2": {
+        "name" : "surasit",
+        "password" : "1234",
+        "occupation" : "police" , 
+        "id" : 2
+    },
+    "user3": {
+        "name" : "nattakan",
+        "password" : "4567",
+        "occupation" : "doctor" , 
+        "id" : 3
+    },
+    "user4": {
+        "name" : "sirawit",
+        "password" : "5555",
+        "occupation" : "dev" , 
+        "id" : 4
+    }
+}
