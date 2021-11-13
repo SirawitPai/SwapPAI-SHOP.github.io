@@ -1,4 +1,4 @@
-# SwapPAI-SHOP.github.io
+# SwapPAI-SHOP
 MINI PROJECT NODE.JS + EXPRESS AND MONGODB
 
 ![1636036538797](https://user-images.githubusercontent.com/71228820/140336189-e9549784-38af-4937-a2c2-76e1ef78ec32.jpg)
